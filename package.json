@@ -27,8 +27,6 @@
   "plugins": {
     "@vercel/node": {},
     "@tailwindcss/postcss": {}
-  },
-  "devDependencies": {
-    "tailwindcss": "^4.1.7"
   }
+ 
 }
