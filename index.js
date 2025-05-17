@@ -1,8 +1,9 @@
+
 const express = require('express');
 
 const app = express();
 const path = require('path');
-
+var signin = false;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -11,8 +12,25 @@ app.set('views', path.join(__dirname, 'views'));
 app.set(express.static(path.join(__dirname, 'public')));
 
 
-app.get('/', (req, res) => {
-    res.render('login', { title: 'Home' });
+
+
+
+app.get('/login', (req, res) => {
+    res.render('login');
+}
+);
+app.get('/signin', (req, res) => {
+    res.render('signin');
+    
+}
+);
+app.get('/',(req, res) => {
+    if (signin) {
+        res.render('home', { signin: true });
+    } else {
+        res.redirect('/login');
+    }
+
 }
 );
 
