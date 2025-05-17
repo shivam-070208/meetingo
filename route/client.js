@@ -14,8 +14,11 @@ clientRoute.get('/signin', (req, res) => {
 );
 clientRoute.get('/',(req, res) => {
  
-        res.redirect('/login');
-    
+        if(req.cookies && req.cookies.token){
+            res.render('home');
+        }else{
+            res.redirect('/login');
+        }
 
 }
 );
