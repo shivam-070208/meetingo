@@ -16,6 +16,12 @@ app.get('/', (req, res) => {
 }
 );
 
+app.post('/google-auth', (req, res) => {
+   console.log(req.body);
+    
+}
+);
+
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
