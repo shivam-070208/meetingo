@@ -12,7 +12,7 @@ app.set(express.static(path.join(__dirname, 'public')));
 
 
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Home' });
+    res.render('login', { title: 'Home' });
 }
 );
 
