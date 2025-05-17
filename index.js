@@ -18,6 +18,7 @@ app.get('/', (req, res) => {
 
 app.post('/google-auth', (req, res) => {
    console.log(req.body);
+   res.redirect('/');
     
 }
 );
