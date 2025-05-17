@@ -5,7 +5,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "post": "git add . && git commit -m \"update\" && git push",
-    "build:css": "tailwindcss -i ./public/styles/index.css -o ./public/styles/tailwind.css --minify"
+    "build:css": "tailwindcss -i ./public/styles/index.css -o ./public/styles/index.css --watch"
   },
   "keywords": [],
   "author": "",
