@@ -1,12 +1,15 @@
 
 const express = require('express');
+
 // variable making
 const app = express();
 const path = require('path');
+const run = require('./config/mongodb');
 const clientRoute = require('./route/client');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+dotenv.config();
 
 const userRoute = require('./route/user');
 
@@ -15,6 +18,9 @@ const userRoute = require('./route/user');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
+
+//middle function 
+run().catch(console.dir);
 // Middleware
 app.use(express.json());
 
