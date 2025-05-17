@@ -4,9 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "post": "git add . && git commit -m \"update\" && git push",
-     "postinstall": "npm run build:css",
-    "build:css": "tailwindcss -i ./public/styles/input.css -o ./public/styles/index.css --watch"
+    "post": "git add . && git commit -m \"update\" && git push"
   },
   "keywords": [],
   "author": "",
