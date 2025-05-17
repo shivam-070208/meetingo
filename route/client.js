@@ -1,13 +1,7 @@
 const clientRoute = require('express').Router();
 
 //middleware
-clientRoute.use((req, res, next) => {
-    if (req.cookies && req.cookies.token) {
-        next();
-    } else {
-        res.redirect('/login');
-    }
-});
+
 
 clientRoute.get('/login', (req, res) => {
     res.render('login');
