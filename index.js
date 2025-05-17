@@ -7,6 +7,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
+app.set('views', __dirname + '/views');
 
 
 app.get('/', (req, res) => {
@@ -14,4 +15,8 @@ app.get('/', (req, res) => {
 }
 );
 
-module.exports = app;
+
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
+}
+);
