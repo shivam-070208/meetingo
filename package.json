@@ -4,14 +4,25 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "post": "git add . && git commit -m \"update\" && git push"
+    "post": "git add . && git commit -m \"update\" && git push",
+    "build:css": "tailwindcss -i ./public/styles/index.css -o ./public/styles/tailwind.css --minify"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "@tailwindcss/postcss": "^4.1.7",
     "ejs": "^3.1.10",
-    "express": "^5.1.0"
+    "express": "^5.1.0",
+    "postcss": "^8.5.3"
+  },
+  "plugins": {
+    "@vercel/node": {},
+    "@tailwindcss/postcss": {}
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.1.7"
   }
 }
