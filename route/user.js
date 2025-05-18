@@ -29,7 +29,7 @@ userRoute.post('/login',async (req, res) => {
         }
     }catch(err){
         console.log(err);
-        res.redirect('/login?message=Error%20occurred%20at%20at%server%side');
+        res.redirect('/login?message=Error%20occurred%20at%20at%20server%20side');
     }
 
    

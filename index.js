@@ -1,10 +1,10 @@
-
 const express = require('express');
 
 // variable making
 const app = express();
 const path = require('path');
 const run = require('./config/mongodb');
+const connectDB = require('./config/mongodb');
 const clientRoute = require('./route/client');
 const session = require('express-session');
 const cookieParser = require('cookie-parser');
@@ -13,11 +13,12 @@ dotenv.config();
 
 const userRoute = require('./route/user');
 
+// Connect to the database
+connectDB();
 
 // Middleware
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
-
 
 //middle function 
 run().catch(console.dir);
@@ -35,10 +36,6 @@ app.use(session({
     saveUninitialized: true,
     secure: true
 }));
-
-
-
-
 
 app.get('/google-auth', (req, res) => {
    console.log(req.body);
