@@ -37,11 +37,7 @@ app.use(session({
     secure: true
 }));
 
-app.get('/google-auth', (req, res) => {
 
-   res.redirect('/login?message=Google%20authentication%20is%20not%20implemented%20yet');
-
-});
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
