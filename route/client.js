@@ -4,7 +4,13 @@ const clientRoute = require('express').Router();
 
 
 clientRoute.get('/login', (req, res) => {
-    res.render('login');
+    const { message } = req.query;
+    if (message) {
+        res.render('login', { message });
+    } else {
+        res.render('login');
+    }
+   
 }
 );
 clientRoute.get('/signin', (req, res) => {
