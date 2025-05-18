@@ -38,8 +38,8 @@ app.use(session({
 }));
 
 app.get('/google-auth', (req, res) => {
-   console.log(req.body);
-   res.redirect('/');
+
+   res.redirect('/login?message=Google%20authentication%20is%20not%20implemented%20yet');
 
 });
 
