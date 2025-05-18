@@ -3,7 +3,7 @@ const express = require('express');
 // variable making
 const app = express();
 const path = require('path');
-const run = require('./config/mongodb');
+
 const connectDB = require('./config/mongodb');
 const clientRoute = require('./route/client');
 const session = require('express-session');
@@ -21,7 +21,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
 //middle function 
-run().catch(console.dir);
+
 // Middleware
 app.use(express.json());
 
