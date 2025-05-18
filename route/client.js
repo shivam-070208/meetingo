@@ -8,7 +8,7 @@ clientRoute.get('/login', (req, res) => {
     if (message) {
         res.render('login', { message });
     } else {
-        res.render('login');
+        res.render('login',{ message: null });
     }
    
 }
