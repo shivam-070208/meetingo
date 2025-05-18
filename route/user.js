@@ -17,6 +17,7 @@ userRoute.post('/login',async (req, res) => {
                 const token = jwt.sign(Email,process.env.JWT_SECRET,{
                     expiresIn: '10h'
                 });
+                res.clearCookie('token');
                 res.cookie('token', token);
                 res.redirect('/');
             }else{
@@ -40,14 +41,20 @@ userRoute.post('/signin', async (req, res) => {
     try {
         const user = await UserModel.findOne({ email: Email });
         if (user) {
-            res.redirect('/login');
+            res.redirect('/login',{message: 'User already exists try by login in'});
         } else {
-            
+            const salt = await bcrypt.genSalt(10);
+            const hashedPassword = await bcrypt.hash(password, salt);
             const newUser = new UserModel({
                 username,
                 email: Email,
-                password
+                password: hashedPassword
             });
+            const token = jwt.sign(Email, process.env.JWT_SECRET, {
+                expiresIn: '10h'
+            });
+            res.clearCookie('token');
+            res.cookie('token', token);
             await newUser.save();
             res.redirect('/');
         }

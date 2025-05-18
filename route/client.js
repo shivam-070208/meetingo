@@ -21,6 +21,7 @@ clientRoute.get('/signin', (req, res) => {
 clientRoute.get('/',(req, res) => {
  
         if(req.cookies && req.cookies.token){
+            
             res.render('home');
         }else{
             res.redirect('/login');
