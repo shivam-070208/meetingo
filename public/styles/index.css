@@ -332,6 +332,18 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .text-\[0\.8em\] {
+    font-size: 0.8em;
+  }
+  .text-\[1\.0em\] {
+    font-size: 1.0em;
+  }
+  .text-\[1\.2em\] {
+    font-size: 1.2em;
+  }
+  .text-\[3em\] {
+    font-size: 3em;
+  }
   .text-\[max\(\)\] {
     font-size: max();
   }
@@ -363,6 +375,15 @@
   .font-semibold {
     --tw-font-weight: var(--font-weight-semibold);
     font-weight: var(--font-weight-semibold);
+  }
+  .text-\[0\.em\] {
+    color: 0.em;
+  }
+  .text-\[3e\] {
+    color: 3e;
+  }
+  .text-\[em\] {
+    color: em;
   }
   .text-blue-500 {
     color: var(--color-blue-500);
