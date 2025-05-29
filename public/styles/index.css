@@ -332,6 +332,30 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .text-\[max\(\)\] {
+    font-size: max();
+  }
+  .text-\[max\(1\.4vw\,12px\)\] {
+    font-size: max(1.4vw, 12px);
+  }
+  .text-\[max\(1\.4vw\,13px\)\] {
+    font-size: max(1.4vw, 13px);
+  }
+  .text-\[max\(1\.4vw\,18px\)\] {
+    font-size: max(1.4vw, 18px);
+  }
+  .text-\[max\(1\.6vw\,12px\)\] {
+    font-size: max(1.6vw, 12px);
+  }
+  .text-\[max\(1\.6vw\,14px\)\] {
+    font-size: max(1.6vw, 14px);
+  }
+  .text-\[max\(2vw\,\)\] {
+    font-size: max(2vw, );
+  }
+  .text-\[max\(2vw\,18px\)\] {
+    font-size: max(2vw, 18px);
+  }
   .font-bold {
     --tw-font-weight: var(--font-weight-bold);
     font-weight: var(--font-weight-bold);
