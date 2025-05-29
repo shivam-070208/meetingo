@@ -24,11 +24,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 // Middleware
 app.use(express.json());
-
-app.use(express.urlencoded({ extended: true }));
-app.use('/', clientRoute);
-app.use('/api', userRoute);
-app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(session({
     secret: 'hare_hare',
@@ -36,6 +31,11 @@ app.use(session({
     saveUninitialized: true,
     secure: true
 }));
+
+app.use(express.urlencoded({ extended: true }));
+app.use('/', clientRoute);
+app.use('/api', userRoute);
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 
