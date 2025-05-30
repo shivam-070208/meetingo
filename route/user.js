@@ -41,9 +41,9 @@ userRoute.post('/signin', async (req, res) => {
    
     try {
         const user = await UserModel.findOne({ email: Email });
-        console.log(user)
+        
         if (user) {
-            res.status(500).redirect('/login',{message: 'User already exists try by login in'});
+          return  res.status(500).redirect('/login',{message: 'User already exists try by login in'});
         } else {
             const salt = await bcrypt.genSalt(10);
             const hashedPassword = await bcrypt.hash(password, salt);
