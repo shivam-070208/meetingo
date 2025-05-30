@@ -18,7 +18,10 @@ clientRoute.get('/login', (req, res) => {
 }
 );
 clientRoute.get('/signin', (req, res) => {
-    res.render('signin');
+    if(req.cookies && req.cookies.token){
+        res.redirect('/')
+    }
+   else res.render('signin');
     
 }
 );
@@ -26,10 +29,17 @@ clientRoute.get('/',(req, res) => {
         
         if(req.cookies && req.cookies.token){
          
-            res.render('home');
+            res.render('main');
         }else{
-            res.redirect('/login');
+            res.redirect('/intro');
         }
+
+}
+);
+clientRoute.get('/intro',(req, res) => {
+    const {message}=req.query
+    console.log(message)
+        res.render('home',{message:message??''});
 
 }
 );

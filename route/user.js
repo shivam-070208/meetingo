@@ -3,6 +3,7 @@ const UserModel = require('../database/usermodule');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const dotenv = require('dotenv');
+const Contactmodel = require('../database/contact.js')
 dotenv.config();
 
 userRoute.post('/login',async (req, res) => {
@@ -66,5 +67,15 @@ userRoute.post('/signin', async (req, res) => {
     }
     
 });
+userRoute.post('/contact',async (req,res)=>{
+    const {name,email} = req.body;
+    try{
+       await Contactmodel.create({name,email});
+                res.redirect('/intro?message=thanks%20for%20connecting%20with%20us#contact');
+    }catch(err){
+        console.log(err);
+        res.redirect('/intro?message=error%20at%20server%20side');
+    }
+})
 
 module.exports = userRoute;
