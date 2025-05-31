@@ -1,5 +1,6 @@
 const Socket = io();
 var mystream
+var call
   var peer = new Peer({
 	config: {'iceServers': [
   { urls: 'stun:stun.l.google.com:19302' },
@@ -16,15 +17,22 @@ const getstream = async ({video = true,audio=true})=>{
 const stream = await navigator.mediaDevices.getUserMedia({video,audio});
 return stream;
 };
-const addremoteStream = (stream)=>{
-    const maindiv = document.querySelector('.maindiv');
-    const video = document.createElement('video');
-    video.srcObject = stream;
-    video.classList.add('w-full');
-     video.play()
-    maindiv.appendChild(video);
-    
-}
+const addremoteStream = (stream) => {
+  const maindiv = document.querySelector('.maindiv');
+
+  // Check if stream already exists
+  const existing = [...maindiv.querySelectorAll('video')].find(
+    (vid) => vid.srcObject && vid.srcObject.id === stream.id
+  );
+  if (existing) return; // Prevent duplicates
+
+  const video = document.createElement('video');
+  video.srcObject = stream;
+  video.classList.add('w-full');
+  video.autoplay = true;
+  video.playsInline = true;
+  maindiv.appendChild(video);
+};
 
 Socket.emit('join-me',{id:id});
 Socket.on('enter',async ()=>{
@@ -42,10 +50,11 @@ Socket.on('newmember',({socketid})=>{
 
 Socket.on('allowed',async (data)=>{
    console.log('theyneewmemberallowed');
- var call = peer.call(data.peer,mystream);
+ call = peer.call(data.peer,mystream);
   
  call.on('stream', (stream) => {
-       addremoteStream(stream);
+      console.log('2')
+    addremoteStream(stream);
       });
 
 })
@@ -56,6 +65,7 @@ peer.on('call',async function(call) {
 	
 	call.answer(mystream);
      call.on('stream', (stream) => {
+        console.log('1')
         addremoteStream(stream);
       });
   });

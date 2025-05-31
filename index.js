@@ -52,7 +52,7 @@ io.on('connection',(socket)=>{
     console.log('new connection',socket.id);
     socket.on('join-me',({id})=>{
         console.log(id)
-        socket.to(id).emit('newmember',{socketid:socket.id});
+        io.to(id).emit('newmember',{socketid:socket.id});
         socket.join(id);
         socket.emit('enter');
     });
