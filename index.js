@@ -1,8 +1,9 @@
 const express = require('express');
-
-// variable making
+const http = require('http')
 const app = express();
 const path = require('path');
+const {Server} = require('socket.io');
+
 
 const connectDB = require('./config/mongodb');
 const clientRoute = require('./route/client');
@@ -38,9 +39,39 @@ app.use('/', clientRoute);
 app.use('/api', userRoute);
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use((req, res) => {
+    res.status(404).render('error');
+});
 
 
-app.listen(3000, () => {
+const server = http.createServer(app)
+const io =new Server(server)
+
+
+io.on('connection',(socket)=>{
+    console.log('new connection',socket.id);
+    socket.on('join-me',({id})=>{
+        console.log(id)
+        socket.to(id).emit('newmember',{socketid:socket.id});
+        socket.join(id);
+        socket.emit('enter');
+    });
+    socket.on('giveentry',({id,peer})=>{
+         console.log('theyIreceivedneewmemberallowed');
+        setTimeout(()=>{
+            console.log('theyIsentneewmemberallowed');
+            socket.to(id).emit('allowed',{peer:peer})
+        },2000)
+    })
+
+})
+
+
+
+server.listen(3000, () => {
     console.log('Server is running on port 3000');
 }
 );
+
+
+
