@@ -51,7 +51,7 @@ const io =new Server(server)
 io.on('connection',(socket)=>{
     console.log('new connection',socket.id);
     socket.on('join-me',({id})=>{
-        console.log(id)
+        
         io.to(id).emit('newmember',{socketid:socket.id});
         socket.join(id);
         socket.emit('enter');
@@ -61,9 +61,13 @@ io.on('connection',(socket)=>{
         setTimeout(()=>{
             console.log('theyIsentneewmemberallowed');
             socket.to(id).emit('allowed',{peer:peer})
-        },2000)
+        },2000);
     })
-
+    socket.on('close', (data) => {
+     console.log(data)
+   
+    io.to(data.id).emit('peer-left', { peerId: data.peerid });
+  });
 })
 
 
