@@ -1,4 +1,5 @@
 const newmeetbtn = document.querySelector('#newmeet');
+const joinmeet = document.querySelector('.joinmeet');
 
 let creating = false;
 newmeetbtn.addEventListener('click', async (e) => {
@@ -15,11 +16,29 @@ newmeetbtn.addEventListener('click', async (e) => {
          e.target.textContent =value;
         creating = false;
        
-        window.location.href = `${window.location.href}meet?id=${data.data}`;  
+        window.location.href = `${window.origin}/meet?id=${data.data}`;  
     } catch (error) {
         console.error(error);
         e.target.textContent = "Error! Try again.";
         e.target.textContent =value;
         creating = false;
     }
+});
+joinmeet.addEventListener('click', async (e) => {
+    if (creating) return;
+    creating = true;
+    let value =e.target.textContent
+    e.target.textContent = "joining.."
+    
+    const input = document.querySelector('.inputmeetid').value
+   
+      
+       
+        window.location.href = `${window.origin}/meet?id=${input}`;  
+   
+        
+        e.target.textContent = "Error! Try again.";
+        e.target.textContent =value;
+        creating = false;
+
 });

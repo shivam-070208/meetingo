@@ -14,38 +14,34 @@
       Meetingo
     </a>
    <div class="md:flex hidden gap-3">
-  <button
+ <button  id="newmeet"
       class="bg-white text-[#5e2dbf] px-5 py-2 rounded-lg font-semibold shadow hover:bg-purple-100 transition"
     >
-     <a href="/create">
+  
          Create Meet+
-    </a> 
     </button>
-       <button
-      class="bg-[#5e2dbf] hover:text-[#5e2dbf]  text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-purple-100 transition"
-    >
-     <a href="/join">
-        Join meet+
-    </a> 
-    </button>
+    
    </div>
   
   </div>
 </nav>
-   <div class="flex flex-wrap  gap-3">
+   <div class="flex flex-wrap flex-col gap-3">
   <button  id="newmeet"
       class="bg-white text-[#5e2dbf] px-5 py-2 rounded-lg font-semibold shadow hover:bg-purple-100 transition"
     >
   
          Create Meet+
     </button>
-       <button
-      class="bg-[#5e2dbf] hover:text-[#5e2dbf]  text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-purple-100 transition"
-    >
-   
-        Join meet+
-    
-    </button>
+    <div>
+      <input type="text" placeholder="Iinputmeetid" class="inputmeetid border-2 border-white outline-none p-1 rounded">
+      <button
+        class="bg-[#5e2dbf] joinmeet hover:text-[#5e2dbf]  text-white px-5 py-2 rounded-lg font-semibold shadow hover:bg-purple-100 transition"
+      >
+     
+          Join meet+
+      
+      </button>
+    </div>
    </div>
   
    <script src="javascript/main.js"></script>

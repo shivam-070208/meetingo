@@ -6,9 +6,9 @@ const dotenv = require('dotenv');
 dotenv.config()
 
 clientRoute.get('/google-auth', (req, res) => {
-   const query = req.query;
-   res.send(query)
-   
+    console.log(req.query);
+   res.redirect('/login?message=Google%20authentication%20is%20not%20implemented%20yet');
+
 });
 clientRoute.get('/login', (req, res) => {
     const { message } = req.query;

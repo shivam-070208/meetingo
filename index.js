@@ -64,10 +64,14 @@ io.on('connection',(socket)=>{
         },2000);
     })
     socket.on('close', (data) => {
-     console.log(data)
+    
    
     io.to(data.id).emit('peer-left', { peerId: data.peerid });
   });
+  socket.on('close-call',(data)=>{
+    console.log( socket.to(data.data).emit('removepeer',{peer:data.peer,e:data.e}))
+
+})
 })
 
 
